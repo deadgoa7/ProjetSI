@@ -1,5 +1,7 @@
 // FileName: index.js
 
+const dbUrl = 'mongodb://localhost:27017/projetArchitecture';
+
 //IMPORT 
 
 let bodyParser = require('body-parser');
@@ -18,7 +20,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 // Connect to Mongoose and set connection variable
-mongoose.connect('mongodb://localhost:27017/projetArchitecture', { useNewUrlParser: true});
+mongoose.connect(dbUrl, { useNewUrlParser: true});
 var db = mongoose.connection;
 
 // Added check for DB connection
