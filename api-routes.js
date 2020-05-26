@@ -24,7 +24,9 @@ router.route('/Festivals/departement/:departement')
 router.route('/Festivals/postal/:postal')
      .get(festivalController.listPostal);
 
-     
+router.route('Festivals/add')
+     .post(festivalController.addFestival)
+
 // Export API routes
 module.exports = router;
 
