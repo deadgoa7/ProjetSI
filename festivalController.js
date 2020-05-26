@@ -61,6 +61,6 @@ exports.listPostal= function (req, res) {
   }
 
 //Handle POST request 
-exports.addFestivaks = function (req, res){
+exports.addFestivals = function (req, res){
     
 }
