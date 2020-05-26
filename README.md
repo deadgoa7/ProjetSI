@@ -10,7 +10,7 @@ API pour gérer et afficher une base de données de festivals
 
 ## Comment démarrer le service ?
 1) Télécharger l'archive ou effectuer un git clone
-2) Se rendre dans le fichier index.js et remplacer dbUrl par le chemin de votre collection
+2) Se rendre dans le fichier index.js et remplacer dbUrl par le chemin de votre base de données
 3) Ouvrir un terminal et se placer dans ProjetSI
 4) Lancer un npm install
 5) Lancer un npm start
