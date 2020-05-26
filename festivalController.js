@@ -59,8 +59,3 @@ exports.listPostal= function (req, res) {
         });
     });
   }
-
-//Handle POST request 
-exports.addFestivals = function (req, res){
-    
-}
