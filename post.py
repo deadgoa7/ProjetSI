@@ -83,6 +83,6 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(host='localhost', port=int(7888)) # Run the app
+    app.run(host='localhost', port=int(8080)) # Run the app
 
         

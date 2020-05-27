@@ -1,0 +1,184 @@
+swagger: "2.0"
+info:
+  title: The Festival Database API
+  description : API de gestions d'une base de données de festivals
+  version: 1.0.0
+
+host: 127.0.0.1:7888
+
+basePath: "/api"
+paths:
+
+  /:
+    get:
+      responses:
+        '200':
+          description: success
+          schema:
+            $ref: "#/definitions/rootResponse"
+        '405':
+          description: Method Not Allowed !
+        '404':
+          description: Page Not Found
+        default:
+          description: "Unknown Code"
+
+  /Festivals:
+    get:
+      responses:
+        '200':
+          description: success
+          schema:
+            $ref: "#/definitions/Festivals"
+        '405':
+            description: Method Not Allowed !
+        '404':
+            description: Page Not Found
+        default:
+            description: "Unknown Code"
+  
+  /Festivals/departement/{departement}:
+    get:
+      parameters:
+        - name: departement
+          type: integer
+          required: true
+          in: path
+      
+      responses:
+        '200':
+          description: success
+          schema:
+            $ref: "#/definitions/Festivals"
+        '405':
+            description: Method Not Allowed !
+        '404':
+            description: Page Not Found
+        default:
+            description: "Unknown Code"
+
+  /Festivals/postal/{postal}:
+    get:
+      parameters:
+        - name: postal
+          type: integer
+          required: true
+          in: path
+      
+      responses:
+        '200':
+          description: success
+          schema:
+            $ref: "#/definitions/Festivals"
+        '405':
+            description: Method Not Allowed !
+        '404':
+            description: Page Not Found
+        default:
+            description: "Unknown Code"
+          
+
+  /api/addFestival:
+    post:
+      parameters:
+        - name: form
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/formModel"
+
+      consumes:
+        - "multipart/form-data"
+      
+      produces:
+        - "text/html"
+        - "application/json"
+
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/Post200Response'
+        '400':
+          description: Incomplete request
+        '405':
+          description: Method Not Allowed !
+        '404':
+          description: Page Not Found
+        default:
+          description: "Unknown Code"
+
+
+
+
+
+
+
+definitions:
+
+  Festivals:
+    type: object
+    properties: 
+      status: 
+        type: string
+        example: success
+      message: 
+        type: string
+        example: Festivals retrieved successfully !
+      data:
+        type: array
+        items:
+          type: string
+
+  rootResponse:
+    type: object
+    properties:
+      status:
+        type: string
+        example: API Working
+      message: 
+        type: string
+        example: Welcome to the Festival Database API !
+
+  Post200Response:
+    type: object
+    properties : 
+      message : 
+        type : string
+        example : Success
+
+  formModel:
+    type: object
+    properties:
+      departement:
+        description: Département du festival
+        type : integer
+        example: 75
+        minLength: 2
+        maxLength: 2
+      nom:
+        type: string
+        description: Nom du festival
+        example: Lollapalooza Paris
+      site:
+        type: string
+        description: Site web du festival
+        example: https://www.lollaparis.com/
+      code_postal:
+        type: integer
+        description: Code postal de l'endroit ou se déroule le festival
+        example : 75016
+        minLength: 5
+        maxLength: 5
+      domaine:
+        type: string
+        description: Domaine du festival (Musique, humour, danse...)
+        example: Musique
+    required:
+      - departement
+      - nom
+      - site
+      - code_postal
+      - domaine
+
+
